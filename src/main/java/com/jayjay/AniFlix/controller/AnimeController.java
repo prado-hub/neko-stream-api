@@ -18,7 +18,7 @@ public class AnimeController {
     }
 
     //get - list all animes
-    @GetMapping("/")
+    @GetMapping()
     public List<Anime> listAnime(){
         return animeService.listAnime();
     }
@@ -30,7 +30,7 @@ public class AnimeController {
     }
 
     //post - register a new anime
-    @PostMapping("/")
+    @PostMapping()
     public Anime createAnime(@RequestBody Anime anime){
         return animeService.createAnime(anime);
     }
