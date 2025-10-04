@@ -7,6 +7,7 @@ import com.jayjay.AniFlix.service.GenreService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/genre")
@@ -22,6 +23,12 @@ public class GenreController {
     @GetMapping()
     public List<GenreResponse> listGenres(){
         return genreService.listGenre();
+    }
+
+    //get - list genre by id
+    @GetMapping("/{id}")
+    public Optional<GenreResponse> listGenreById(@PathVariable Long id){
+        return genreService.listGenreById(id);
     }
 
     // post - register a new genre

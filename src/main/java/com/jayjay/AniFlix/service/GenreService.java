@@ -29,6 +29,11 @@ public class GenreService {
               .toList();
     }
 
+    public Optional<GenreResponse> listGenreById(Long id){
+        return genreRepository.findById(id)
+                .map(genreMapper::toResponse);
+    }
+
     public GenreResponse createGenre(GenreRequest genre){
         Genre createdGenre = genreMapper.toEntity(genre);
         genreRepository.save(createdGenre);
@@ -38,5 +43,5 @@ public class GenreService {
     public void deleteGenre(Long id){
         genreRepository.deleteById(id);
     }
-    
+
 }
