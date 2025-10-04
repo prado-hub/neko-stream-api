@@ -1,5 +1,7 @@
 package com.jayjay.AniFlix.controller;
 
+import com.jayjay.AniFlix.dto.request.GenreRequest;
+import com.jayjay.AniFlix.dto.response.GenreResponse;
 import com.jayjay.AniFlix.entity.Genre;
 import com.jayjay.AniFlix.service.GenreService;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +20,13 @@ public class GenreController {
 
     //get - list all genre
     @GetMapping()
-    public List<Genre> listGenres(){
+    public List<GenreResponse> listGenres(){
         return genreService.listGenre();
     }
 
     // post - register a new genre
     @PostMapping()
-    public Genre createGenre(@RequestBody Genre genre){
+    public GenreResponse createGenre(@RequestBody GenreRequest genre){
         return genreService.createGenre(genre);
     }
 
@@ -36,7 +38,7 @@ public class GenreController {
 
     // update - update a genre
     @PutMapping("/{id}")
-    public Genre updateGenre(@PathVariable Long id,@RequestBody Genre genreAtt){
+    public GenreResponse updateGenre(@PathVariable Long id,@RequestBody GenreRequest genreAtt){
         return genreService.updateGenre(id,genreAtt);
     }
 }
