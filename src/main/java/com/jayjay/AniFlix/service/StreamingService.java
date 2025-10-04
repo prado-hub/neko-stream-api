@@ -8,6 +8,7 @@ import com.jayjay.AniFlix.repository.StreamingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StreamingService {
@@ -26,6 +27,10 @@ public class StreamingService {
                 .stream()
                 .map(streamingMapper::toResponse)
                 .toList();
+    }
+
+    public Optional<StreamingResponse> listStreamingById(Long id){
+        return streamingRepository.findById(id).map(streamingMapper::toResponse);
     }
 
     public StreamingResponse createStreaming(StreamingRequest streaming){

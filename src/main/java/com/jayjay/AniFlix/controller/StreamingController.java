@@ -7,6 +7,7 @@ import com.jayjay.AniFlix.service.StreamingService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/streaming")
@@ -22,6 +23,12 @@ public class StreamingController {
     @GetMapping()
     public List<StreamingResponse> listStreaming(){
         return streamingService.listStreaming();
+    }
+
+    //get - list streaming by id
+    @GetMapping("/{id}")
+    public Optional<StreamingResponse> listStreamingById(@PathVariable Long id){
+        return streamingService.listStreamingById(id);
     }
 
     // post - register a new streaming
