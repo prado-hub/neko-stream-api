@@ -36,9 +36,4 @@ public class GenreController {
         genreService.deleteGenre(id);
     }
 
-    // update - update a genre
-    @PutMapping("/{id}")
-    public GenreResponse updateGenre(@PathVariable Long id,@RequestBody GenreRequest genreAtt){
-        return genreService.updateGenre(id,genreAtt);
-    }
 }

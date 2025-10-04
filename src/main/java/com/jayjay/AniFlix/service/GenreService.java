@@ -38,16 +38,5 @@ public class GenreService {
     public void deleteGenre(Long id){
         genreRepository.deleteById(id);
     }
-
-    public GenreResponse updateGenre(Long id,GenreRequest genreAtt){
-        Optional<Genre> genreVerify = genreRepository.findById(id);
-
-        if(genreVerify.isEmpty()){
-            return null;
-        }else{
-            genreAtt.setId(id);
-            genreRepository.save(genreAtt);
-            return genreMapper.toResponse();
-        }
-    }
+    
 }
