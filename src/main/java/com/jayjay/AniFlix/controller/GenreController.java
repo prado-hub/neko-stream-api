@@ -17,13 +17,13 @@ public class GenreController {
     }
 
     //get - list all genre
-    @GetMapping("/")
+    @GetMapping()
     public List<Genre> listGenres(){
         return genreService.listGenre();
     }
 
     // post - register a new genre
-    @PostMapping("/")
+    @PostMapping()
     public Genre createGenre(@RequestBody Genre genre){
         return genreService.createGenre(genre);
     }
