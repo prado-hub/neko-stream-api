@@ -28,14 +28,4 @@ public class StreamingService {
     public void deleteStreaming(Long id){
         streamingRepository.deleteById(id);
     }
-
-    public Streaming updateStreaming(Long id, Streaming streamingAtt){
-        Optional<Streaming> streamingVerify = streamingRepository.findById(id);
-        if(streamingVerify.isEmpty()){
-            return null;
-        }else{
-            streamingAtt.setId(id);
-            return streamingRepository.save(streamingAtt);
-        }
-    }
 }

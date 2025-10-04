@@ -33,10 +33,4 @@ public class StreamingController {
     public void deleteStreaming(@PathVariable Long id){
        streamingService.deleteStreaming(id);
     }
-
-    // update - update a streaming
-    @PutMapping("/{id}")
-    public Streaming updateStreaming(@PathVariable Long id,@RequestBody Streaming streamingAtt){
-        return streamingService.updateStreaming(id,streamingAtt);
-    }
 }
