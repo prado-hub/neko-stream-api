@@ -1,5 +1,7 @@
 package com.jayjay.AniFlix.controller;
 
+import com.jayjay.AniFlix.dto.request.StreamingRequest;
+import com.jayjay.AniFlix.dto.response.StreamingResponse;
 import com.jayjay.AniFlix.entity.Streaming;
 import com.jayjay.AniFlix.service.StreamingService;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +20,13 @@ public class StreamingController {
 
     // get - list all streamings
     @GetMapping()
-    public List<Streaming> listStreaming(){
+    public List<StreamingResponse> listStreaming(){
         return streamingService.listStreaming();
     }
 
     // post - register a new streaming
     @PostMapping()
-    public Streaming createStreaming(@RequestBody Streaming streaming){
+    public StreamingResponse createStreaming(@RequestBody StreamingRequest streaming){
         return streamingService.createStreaming(streaming);
     }
 
