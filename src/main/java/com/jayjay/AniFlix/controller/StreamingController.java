@@ -17,13 +17,13 @@ public class StreamingController {
     }
 
     // get - list all streamings
-    @GetMapping("/")
+    @GetMapping()
     public List<Streaming> listStreaming(){
         return streamingService.listStreaming();
     }
 
     // post - register a new streaming
-    @PostMapping("/")
+    @PostMapping()
     public Streaming createStreaming(@RequestBody Streaming streaming){
         return streamingService.createStreaming(streaming);
     }
