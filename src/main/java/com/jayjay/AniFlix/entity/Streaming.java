@@ -1,5 +1,6 @@
 package com.jayjay.AniFlix.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,5 +23,6 @@ public class Streaming {
     private String name;
 
     @ManyToMany(mappedBy = "streamings")
+    @JsonIgnore
     private List<Anime> anime;
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/genre")
 public class GenreController {
 
-    private GenreService genreService;
+    private final GenreService genreService;
 
     public GenreController(GenreService genreService) {
         this.genreService = genreService;

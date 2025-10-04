@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/streaming")
 public class StreamingController {
 
-    private StreamingService streamingService;
+    private final StreamingService streamingService;
 
     public StreamingController(StreamingService streamingService) {
         this.streamingService = streamingService;
