@@ -4,6 +4,8 @@ import com.jayjay.AniFlix.dto.request.StreamingRequest;
 import com.jayjay.AniFlix.dto.response.StreamingResponse;
 import com.jayjay.AniFlix.entity.Streaming;
 import com.jayjay.AniFlix.service.StreamingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,25 +23,26 @@ public class StreamingController {
 
     // get - list all streamings
     @GetMapping()
-    public List<StreamingResponse> listStreaming(){
-        return streamingService.listStreaming();
+    public ResponseEntity<List<StreamingResponse>> listStreaming(){
+        return ResponseEntity.ok(streamingService.listStreaming());
     }
 
     //get - list streaming by id
     @GetMapping("/{id}")
-    public Optional<StreamingResponse> listStreamingById(@PathVariable Long id){
-        return streamingService.listStreamingById(id);
+    public ResponseEntity<Optional<StreamingResponse>> listStreamingById(@PathVariable Long id){
+        return ResponseEntity.ok(streamingService.listStreamingById(id));
     }
 
     // post - register a new streaming
     @PostMapping()
-    public StreamingResponse createStreaming(@RequestBody StreamingRequest streaming){
-        return streamingService.createStreaming(streaming);
+    public ResponseEntity<StreamingResponse> createStreaming(@RequestBody StreamingRequest streaming){
+        return ResponseEntity.status(HttpStatus.CREATED).body(streamingService.createStreaming(streaming));
     }
 
     // delete - delete a streaming
     @DeleteMapping("/{id}")
-    public void deleteStreaming(@PathVariable Long id){
+    public ResponseEntity<String> deleteStreaming(@PathVariable Long id){
        streamingService.deleteStreaming(id);
+       return ResponseEntity.noContent().build();
     }
 }
