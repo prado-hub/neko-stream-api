@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jayjay</groupId>
-	<artifactId>AniFlix</artifactId>
+	<artifactId>NekoStream</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AniFlix</name>
+	<name>NekoStream</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
