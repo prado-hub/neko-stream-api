@@ -1,8 +1,10 @@
 package com.jayjay.AniFlix.service;
 
+import com.jayjay.AniFlix.dto.request.AnimeRequest;
+import com.jayjay.AniFlix.dto.response.AnimeResponse;
 import com.jayjay.AniFlix.entity.Anime;
+import com.jayjay.AniFlix.mapper.AnimeMapper;
 import com.jayjay.AniFlix.repository.AnimeRepository;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,21 +14,28 @@ import java.util.Optional;
 public class AnimeService {
 
     private final AnimeRepository animeRepository;
+    private final AnimeMapper animeMapper;
 
-    public AnimeService(AnimeRepository animeRepository) {
+    public AnimeService(AnimeRepository animeRepository, AnimeMapper animeMapper) {
         this.animeRepository = animeRepository;
+        this.animeMapper = animeMapper;
     }
 
-    public List<Anime> listAnime(){
-        return animeRepository.findAll();
+    public List<AnimeResponse> listAnime(){
+        return animeRepository.findAll().stream()
+                .map(animeMapper::toResponse)
+                .toList();
     }
 
-    public Optional<Anime> listAnimeById(Long id){
-        return animeRepository.findById(id);
+    public Optional<AnimeResponse> listAnimeById(Long id){
+        return animeRepository.findById(id)
+                .map(animeMapper::toResponse);
     }
 
-    public Anime createAnime(Anime anime){
-        return animeRepository.save(anime);
+    public AnimeResponse createAnime(AnimeRequest anime){
+        Anime animeCreated = animeMapper.toEntity(anime);
+        animeRepository.save(animeCreated);
+        return animeMapper.toResponse(animeCreated);
     }
 
     public void deleteAnime(Long id){

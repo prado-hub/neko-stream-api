@@ -35,13 +35,12 @@ public class GenreService {
     }
 
     public GenreResponse createGenre(GenreRequest genre){
-        Genre createdGenre = genreMapper.toEntity(genre);
-        genreRepository.save(createdGenre);
-        return genreMapper.toResponse(createdGenre);
+        Genre genreCreated = genreMapper.toEntity(genre);
+        genreRepository.save(genreCreated);
+        return genreMapper.toResponse(genreCreated);
     }
 
     public void deleteGenre(Long id){
         genreRepository.deleteById(id);
     }
-
 }

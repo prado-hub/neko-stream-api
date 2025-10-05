@@ -1,5 +1,7 @@
 package com.jayjay.AniFlix.controller;
 
+import com.jayjay.AniFlix.dto.request.AnimeRequest;
+import com.jayjay.AniFlix.dto.response.AnimeResponse;
 import com.jayjay.AniFlix.entity.Anime;
 import com.jayjay.AniFlix.service.AnimeService;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,19 @@ public class AnimeController {
 
     //get - list all animes
     @GetMapping()
-    public List<Anime> listAnime(){
+    public List<AnimeResponse> listAnime(){
         return animeService.listAnime();
     }
 
     //get - list of anime by id
     @GetMapping("/{id}")
-    public Optional<Anime> listAnimeById(@PathVariable Long id){
+    public Optional<AnimeResponse> listAnimeById(@PathVariable Long id){
         return animeService.listAnimeById(id);
     }
 
     //post - register a new anime
     @PostMapping()
-    public Anime createAnime(@RequestBody Anime anime){
+    public AnimeResponse createAnime(@RequestBody AnimeRequest anime){
         return animeService.createAnime(anime);
     }
 
