@@ -14,6 +14,6 @@ public record AnimeResponse(Long Id,
                             double rating,
                             LocalDateTime createdAt,
                             LocalDateTime updatedAt,
-                            List<Genre> genres,
-                            List<Streaming> streamings) {
+                            List<GenreResponse> genres,
+                            List<StreamingResponse> streamings) {
 }

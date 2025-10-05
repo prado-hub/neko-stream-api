@@ -13,6 +13,6 @@ public record AnimeRequest(String title,
                            double rating,
                            LocalDateTime createdAt,
                            LocalDateTime updatedAt,
-                           List<Genre> genres,
-                           List<Streaming> streamings) {
+                           List<Long> genres,
+                           List<Long> streamings) {
 }
