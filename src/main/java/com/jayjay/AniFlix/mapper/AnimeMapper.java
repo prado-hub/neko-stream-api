@@ -54,7 +54,7 @@ public class AnimeMapper {
         return anime;
     }
 
-    public AnimeResponse animeResponse(Anime anime){
+    public AnimeResponse toResponse(Anime anime){
         List<GenreResponse> genres = anime.getGenres().stream()
                 .map(genreMapper::toResponse)
                 .toList();
