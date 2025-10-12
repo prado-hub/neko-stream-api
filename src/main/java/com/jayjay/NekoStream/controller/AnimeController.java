@@ -3,6 +3,8 @@ package com.jayjay.NekoStream.controller;
 import com.jayjay.NekoStream.dto.request.AnimeRequest;
 import com.jayjay.NekoStream.dto.response.AnimeResponse;
 import com.jayjay.NekoStream.service.AnimeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,25 +22,26 @@ public class AnimeController {
 
     //get - list all animes
     @GetMapping()
-    public List<AnimeResponse> listAnime(){
-        return animeService.listAnime();
+    public ResponseEntity<List<AnimeResponse>> listAnime(){
+        return ResponseEntity.ok(animeService.listAnime());
     }
 
     //get - list of anime by id
     @GetMapping("/{id}")
-    public Optional<AnimeResponse> listAnimeById(@PathVariable Long id){
-        return animeService.listAnimeById(id);
+    public ResponseEntity<Optional<AnimeResponse>> listAnimeById(@PathVariable Long id){
+        return ResponseEntity.ok(animeService.listAnimeById(id));
     }
 
     //post - register a new anime
     @PostMapping()
-    public AnimeResponse createAnime(@RequestBody AnimeRequest anime){
-        return animeService.createAnime(anime);
+    public ResponseEntity<AnimeResponse> createAnime(@RequestBody AnimeRequest anime){
+        return ResponseEntity.status(HttpStatus.CREATED).body(animeService.createAnime(anime));
     }
 
     //delete - delete an anime
     @DeleteMapping("/{id}")
-    public void deleteAnime(@PathVariable Long id){
+    public ResponseEntity<String>deleteAnime(@PathVariable Long id){
         animeService.deleteAnime(id);
+        return ResponseEntity.noContent().build();
     }
 }
