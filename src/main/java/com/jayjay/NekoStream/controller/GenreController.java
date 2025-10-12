@@ -23,19 +23,22 @@ public class GenreController {
     //get - list all genre
     @GetMapping()
     public ResponseEntity<List<GenreResponse>> listGenres(){
-        return ResponseEntity.ok(genreService.listGenre());
+        List<GenreResponse> genreList = genreService.listGenre();
+        return ResponseEntity.ok(genreList);
     }
 
     //get - list genre by id
     @GetMapping("/{id}")
     public ResponseEntity<Optional<GenreResponse>> listGenreById(@PathVariable Long id){
-        return ResponseEntity.ok(genreService.listGenreById(id));
+        Optional<GenreResponse> genre = genreService.listGenreById(id);
+        return ResponseEntity.ok(genre);
     }
 
     // post - register a new genre
     @PostMapping()
     public ResponseEntity<GenreResponse> createGenre(@RequestBody GenreRequest genre){
-        return ResponseEntity.status(HttpStatus.CREATED).body(genreService.createGenre(genre));
+        GenreResponse genreCreated = genreService.createGenre(genre);
+        return ResponseEntity.status(HttpStatus.CREATED).body(genreCreated);
     }
 
     //delete - delete a genre
