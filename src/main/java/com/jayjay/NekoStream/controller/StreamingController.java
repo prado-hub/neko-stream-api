@@ -23,19 +23,22 @@ public class StreamingController {
     // get - list all streamings
     @GetMapping()
     public ResponseEntity<List<StreamingResponse>> listStreaming(){
-        return ResponseEntity.ok(streamingService.listStreaming());
+        List<StreamingResponse> streamingList = streamingService.listStreaming();
+        return ResponseEntity.ok(streamingList);
     }
 
     //get - list streaming by id
     @GetMapping("/{id}")
     public ResponseEntity<Optional<StreamingResponse>> listStreamingById(@PathVariable Long id){
-        return ResponseEntity.ok(streamingService.listStreamingById(id));
+        Optional<StreamingResponse> streaming = streamingService.listStreamingById(id);
+        return ResponseEntity.ok(streaming);
     }
 
     // post - register a new streaming
     @PostMapping()
     public ResponseEntity<StreamingResponse> createStreaming(@RequestBody StreamingRequest streaming){
-        return ResponseEntity.status(HttpStatus.CREATED).body(streamingService.createStreaming(streaming));
+        StreamingResponse streamingCreated = streamingService.createStreaming(streaming);
+        return ResponseEntity.status(HttpStatus.CREATED).body(streamingCreated);
     }
 
     // delete - delete a streaming
